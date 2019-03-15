@@ -1,0 +1,8 @@
+# source code paths
+S src
+
+# build path
+B _build/src/lecture5
+
+# package path
+PKG qcheck ppx_deriving.show
