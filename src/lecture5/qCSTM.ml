@@ -1,5 +1,4 @@
 (** A simple state machine framework based on QCheck *)
-#require "qcheck";;
 open QCheck
 
     
@@ -24,6 +23,10 @@ sig
   val init_state : state
   (** The model's initial state. *)
 
+  val next_state : cmd -> state -> state
+  (** Move the internal state machine to the next state. *)
+
+
   val init_sut : unit -> sut
   (** The initial state of the system under test. *)
 
@@ -36,9 +39,6 @@ sig
       [s] is in this case the model's state prior to command execution.
       The returned Boolean value should indicate whether the interpretation went well
       and in case [c] returns a value: whether the returned value agrees with the model's result. *)
-
-  val next_state : cmd -> state -> state
-  (** Move the internal state machine to the next state. *)
 
   val precond : cmd -> state -> bool
   (** [precond c s] expresses preconditions for command [c].
